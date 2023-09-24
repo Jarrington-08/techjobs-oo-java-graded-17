@@ -1,7 +1,8 @@
 package org.launchcode.techjobs.oo;
 
-import java.util.Collections;
+import static java.lang.System.lineSeparator;
 import java.util.Objects;
+
 
 public class Job {
 
@@ -34,6 +35,53 @@ public class Job {
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+
+    @Override
+    public String toString() {
+
+        String aId;
+        String aEmployer;
+        String aLocation;
+        String aPositionType;
+        String aCoreCompetency;
+
+        String noData = "Data not available";
+
+        if (String.valueOf(this.getId()) == null) {
+            aId = noData;
+        } else { aId = String.valueOf(this.getId()); }
+
+        if (name == null || name.isEmpty()) {
+            name = noData;
+        }
+
+        if (employer.getValue() == null || employer.getValue().isEmpty()) {
+            aEmployer = noData;
+        } else { aEmployer = employer.getValue(); }
+
+        if (location.getValue() == null || location.getValue().isEmpty()) {
+            aLocation = noData;
+        } else { aLocation = location.getValue(); }
+
+        if (positionType.getValue() == null || positionType.getValue().isEmpty()) {
+            aPositionType = noData;
+        } else { aPositionType = positionType.getValue(); }
+
+        if (coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty()) {
+            aCoreCompetency = noData;
+        } else { aCoreCompetency = coreCompetency.getValue(); }
+
+
+        return  lineSeparator() +
+                "ID: " + aId + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + aEmployer + "\n" +
+                "Location: " + aLocation + "\n" +
+                "Position Type: " + aPositionType + "\n" +
+                "Core Competency: " + aCoreCompetency +
+                lineSeparator();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,8 +94,6 @@ public class Job {
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
-
-
     public String getName() {
         return name;
     }
